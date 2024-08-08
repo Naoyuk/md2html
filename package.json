@@ -9,5 +9,8 @@
   "keywords": [],
   "author": "Naoyuki Ishida",
   "license": "ISC",
-  "description": "Convert the Markdown file to HTML file."
+  "description": "Convert the Markdown file to HTML file.",
+  "dependencies": {
+    "yargs": "^17.7.2"
+  }
 }
