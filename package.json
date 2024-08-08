@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "name": "md2html",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Naoyuki Ishida",
+  "license": "ISC",
+  "description": "Convert the Markdown file to HTML file."
+}
