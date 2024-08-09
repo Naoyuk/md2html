@@ -1,9 +1,9 @@
 const path = require('path');
-const fs = require('fs');
+const { marked } = require('marked');
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 const { getPackageName } = require('./lib/name');
-const { readMarkDownFileSync } = require('./lib/file');
+const { readMarkDownFileSync, writeHtmlFileSync } = require('./lib/file');
 
 const { argv } = yargs(hideBin(process.argv))
   .option('name', {
@@ -11,6 +11,10 @@ const { argv } = yargs(hideBin(process.argv))
   })
   .option('file', {
     describe: 'The path of the Markdown file'
+  })
+  .option('out', {
+    describe: 'html file',
+    default: 'out.html'
   });
 
 if (argv.name) {
@@ -21,3 +25,7 @@ if (argv.name) {
 
 const markdownStr = readMarkDownFileSync(path.resolve(__dirname, argv.file));
 console.log(markdownStr);
+
+const html = marked(markdownStr);
+
+writeHtmlFileSync(path.resolve(__dirname, argv.out), html);

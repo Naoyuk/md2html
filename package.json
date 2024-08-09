@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "Convert the Markdown file to HTML file.",
   "dependencies": {
+    "marked": "^14.0.0",
     "yargs": "^17.7.2"
   }
 }
