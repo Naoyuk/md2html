@@ -5,17 +5,14 @@ const { marked } = require('marked');
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 const { getPackageName } = require('./lib/name');
-const { readMarkDownFileSync, writeHtmlFileSync } = require('./lib/file');
+const { readMarkDownFileSync, changeExtensionToHtml, writeHtmlFileSync } = require('./lib/file');
 
 const { argv } = yargs(hideBin(process.argv))
   .option('name', {
     describe: 'Show the name of the CLI tool'
   })
-  .option('file', {
-    describe: 'The path of the Markdown file'
-  })
-  .option('out', {
-    describe: 'html file',
+  .option('convert', {
+    describe: 'Convert a markdown file to an HTML file and export it',
     default: 'out.html'
   });
 
@@ -25,9 +22,8 @@ if (argv.name) {
   process.exit(0);
 }
 
-const markdownStr = readMarkDownFileSync(path.resolve(__dirname, argv.file));
-console.log(markdownStr);
-
+const markdownStr = readMarkDownFileSync(path.resolve(__dirname, argv.convert));
 const html = marked(markdownStr);
+const outputPath = changeExtensionToHtml(argv.convert);
 
-writeHtmlFileSync(path.resolve(__dirname, argv.out), html);
+writeHtmlFileSync(path.resolve(__dirname, outputPath), html);
