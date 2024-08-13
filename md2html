@@ -1,11 +1,16 @@
 #!/usr/bin/env node
 
-const path = require('path');
-const { marked } = require('marked');
-const yargs = require('yargs/yargs');
-const { hideBin } = require('yargs/helpers');
-const { getPackageName } = require('./lib/name');
-const { readMarkDownFileSync, changeExtensionToHtml, writeHtmlFileSync } = require('./lib/file');
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import * as path from 'path';
+import { marked } from 'marked';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
+import { getPackageName } from './lib/name.js';
+import { readMarkDownFileSync, changeExtensionToHtml, writeHtmlFileSync } from './lib/file.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const { argv } = yargs(hideBin(process.argv))
   .option('name', {
