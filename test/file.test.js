@@ -22,7 +22,7 @@ test('writeHtmlFileSync', () => {
   const mdPath = path.resolve(__dirname, './fixtures/test.md')
   const htmlPath = path.resolve(__dirname, '../tmp/test.html');
 
-  const markdownStr = readMarkDownFileSync(mdPath); 
+  const markdownStr = readMarkDownFileSync(mdPath);
   const html = marked(markdownStr);
   writeHtmlFileSync(htmlPath, html);
   const htmlStr = fs.readFileSync(htmlPath, { encoding: 'utf8' });
