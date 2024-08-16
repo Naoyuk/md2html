@@ -2,7 +2,14 @@
 指定したMarkdownファイルをHTMLに変換して出力するCLIツール。Node.jsの練習用。
 
 ## Usage
+### --name
 ```
-$ node index.js --file=./target.md
+$ ./md2html --name
 ```
-`target.md`の部分を変換したいMarkdownファイルのパスを指定すると、`target.html`を出力する。
+package.jsonのnameから、このCLIツールの名前を取得し、標準出力する。
+
+### --convert
+```
+$ ./md2html --convert=./target.md
+```
+`target.md`の部分に変換したいMarkdownファイルのパスを指定すると、`target.html`を出力する。
